@@ -1,3 +1,5 @@
+# Models
+*.keras
 # Sources
 split_dataset/
 
