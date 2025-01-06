@@ -1,5 +1,7 @@
 # Models
 *.keras
+*.tflite
+
 # Sources
 split_dataset/
 
