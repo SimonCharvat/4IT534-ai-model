@@ -2,8 +2,10 @@
 *.keras
 *.tflite
 
-# Sources
+# Folders
 split_dataset/
+model/
+checkpoints/
 
 # Byte-compiled files
 *.pyc
