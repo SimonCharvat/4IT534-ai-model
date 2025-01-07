@@ -47,7 +47,7 @@ from predict_using_model import Model
 model = Model()
 result = model.predict("image_example.jpg")
 
-# Example Output: ('Tomato', False, 'Tomato Mosaic Virus')
+# Example Output: ('Peach', False, 'Bacterial spot')
 ```
 
 ## Dependencies

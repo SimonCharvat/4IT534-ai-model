@@ -1,5 +1,6 @@
 
 from labels import labels
+from typing import Tuple
 import numpy as np
 import os
 from tensorflow.keras.models import load_model
@@ -18,17 +19,26 @@ class Model:
         if not os.path.exists(self.model_path):
             print("Creating model from parts...")
             self.merge_file(self.model_path, [
-                "./model_parts/model.keras.part1",
-                "./model_parts/model.keras.part2",
-                "./model_parts/model.keras.part3"
+                ".\model_parts\model.keras.part1",
+                ".\model_parts\model.keras.part2",
+                ".\model_parts\model.keras.part3"
             ])
         
         # Load the trained model
         self.model = load_model(self.model_path)
     
-    def predict(self, image_path):
-        
-        
+    def predict(self, image_path) -> Tuple[str, bool, str]:
+        """
+        Args:
+            image_path (str): The file path to the image in JPG format.
+
+        Returns:
+            Tuple[str, bool, str]: A tuple containing:
+                - Plant name (str)
+                - Boolean value indicating if the plant is healthy (bool)
+                - Disease name (str) if the plant is not healthy, otherwise "healthy"
+        """
+
         prepared_image = self.prepare_image(image_path) # Prepare the image for prediction
         predictions = self.model.predict(prepared_image) # Predict the label
 
@@ -38,6 +48,7 @@ class Model:
 
         # Print the predicted class (you can map this to the actual class name if you have a label map)
         print(f"Predicted class {predicted_class_number}: {predicted_class_info}")
+        return predicted_class_info
 
 
     # Merge multiple files into a single file (creates model file from parts)
