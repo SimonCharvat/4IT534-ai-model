@@ -40,8 +40,7 @@ class Model:
         """
 
         prepared_image = self.prepare_image(image_path) # Prepare the image for prediction
-        # Přepněte model do inference režimu (pro jistotu deaktivace dropoutu a dalších náhodných operací)
-        self.model.trainable = False  # Deaktivuje případné náhodné chování při inference
+        self.model.trainable = False  # Deactivate random behavior of the model during inference (dropout, etc.)
         predictions = self.model.predict(prepared_image) # Predict the label
 
         # Get the class with the highest probability
