@@ -5,6 +5,7 @@ This repository contains a convolutional neural network (CNN) model trained to r
 ```
 .
 ├── model_definition.py          # Model architecture definition
+├── similarity_matrix.py         # Defined similarity lookup matrix
 ├── training_notebook.ipynb      # Jupyter notebook for model training
 └── predict
     ├── labels.py                # Plant class labels and diseases
@@ -31,6 +32,10 @@ This repository contains a convolutional neural network (CNN) model trained to r
 - **Labels**:
   - Class labels and disease names are stored in `labels.py` as a list of tuples. The model's output class ID can be matched to its corresponding label through this file.
 
+- **Similarity**:
+  - File `similarity_matrix.py` contains precalculated matrix (numpy array) which can be used as a lookup table to get similarity score between predicted class and actual class.
+  - File `similarity_matrix.py` also contains code to generate (print) the matrix based on class labels, which can be used to easily change the similarity matrix values.
+
 ## Usage
 
 ### Training the Model
@@ -55,7 +60,7 @@ result = model.predict("image_example.jpg")
 ### Full Dependencies (for Training)
 To install all necessary packages for training the AI model, run the following command:
 ```bash
-pip install kagglehub matplotlib tensorflow
+pip install kagglehub matplotlib tensorflow numpy pandas sklearn
 ```
 
 ### Minimal Dependencies (for Prediction Only)
